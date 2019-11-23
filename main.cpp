@@ -8,7 +8,7 @@ void create(string namefile)
     // file pointer
     fstream fout;
     // opens an existing csv file or creates a new file.
-    string name="./contribuyentes/"+namefile+".csv";
+    string name="/home/matias/dev/exploratoriav2/contribuyentes/"+namefile+".csv";
     fout.open(name, ios::out | ios::app);
     int i;
     // Read the input
@@ -82,6 +82,10 @@ void read_record()
 int main()
 {
     cout << "Hello world!" << endl;
-    create("contribuyente8");
+    string name="";
+    for(int i=1;i<9;i++){
+        name = "contribuyente0" +to_string(i);
+        create(name);
+    }
     return 0;
 }

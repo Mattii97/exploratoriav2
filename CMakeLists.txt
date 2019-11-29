@@ -3,4 +3,4 @@ project(exploratoriav2)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(exploratoriav2 main.cpp)
+add_executable(exploratoriav2 main.cpp Individual.cpp Individual.h)

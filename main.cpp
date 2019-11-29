@@ -15,14 +15,7 @@ const string GENES = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOP"\
 string TARGET = "default target";
 
 // create chromosome or string of genes
-string create_gnome()
-{
-    int len = TARGET.size();
-    string gnome = "";
-    for(int i = 0;i<len;i++)
-        gnome += mutated_genes();
-    return gnome;
-}
+
 
 // Driver code
 int main(int argc,char * argv[])

@@ -7,21 +7,31 @@
 #include <string>
 #include "Individual.h"
 #include "time.h"
+#inclyde "Vector.h"
 using namespace std;
 class Individual {
 public:
+    Vector weight[8]={0,0,0,0,0,0,0,0};
     string chromosome;
     int fitness;
     Individual(string chromosome);
     Individual mate(Individual parent2);
     int cal_fitness();
     bool operator<(const Individual &ind1, const Individual &ind2);
+    char getMutatedGene(int geneNumber);
+    static int random_num(int start, int end);
 };
 
 Individual::Individual(string chromosome)
 {
     this->chromosome = chromosome;
     fitness = cal_fitness();
+};
+
+Individual::Individual()
+{
+    this->chromosome=Chromosome c;
+    fitness = cal_fitness(); ///hay que modificarlo
 };
 
 // Perform mating and produce new offspring
@@ -58,10 +68,23 @@ Individual Individual::mate(Individual par2)
     return Individual(child_chromosome);
 };
 
-Individual::bool operator<(const Individual &ind1, const Individual &ind2);
+bool Individual::operator<(const Individual &ind1, const Individual &ind2);
 {
 return ind1.fitness < ind2.fitness;
 }
 
+char Individual::getMutatedGene(int geneNumber); //Hay que cambiar esta funcion para que devuelva entre rangos distintos dependiendo del gen que se esta mutando
+{
+int len = GENES.size();
+int r = random_num(0, len-1);
+return GENES[r];
+}
+
+static int random_num(int start, int end)
+{
+int range = (end-start)+1;
+int random_int = start+(rand()%range);
+return random_int;
+}
 
 #endif //EXPLORATORIAV2_INDIVIDUAL_H

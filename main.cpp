@@ -40,6 +40,7 @@ int main(int argc,char * argv[])
         it++;
     }
                                      //Este es el codigo que hay que ejecutar una vez por cada enter
+                                     //hay algun problema con las generaciones
     // current generation
     int generation = 0;
     vector<Individual> population;

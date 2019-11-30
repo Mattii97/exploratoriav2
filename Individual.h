@@ -72,7 +72,7 @@ Individual Individual::mate(Individual par2)
     for(int i = 0;i<8;i++)
     {
         // random probability
-        float p = random_num(0, 100)/100;
+        float p = ran=random_num(0,100)/100;
 
         // if prob is less than 0.50, insert gene
         // from parent 1
@@ -92,7 +92,7 @@ Individual Individual::mate(Individual par2)
             // for maintaining diversity
             for (int i=0;i<8;i++)
             {
-                float p = random_num(0, 100)/100;
+                float p = ran=random_num(0, 100)/100;
                 if (p<0.05)
                 child_chromosome[i] = getMutatedGene(i);
             }
@@ -124,7 +124,6 @@ int Individual::random_num(int start, int end)
 {
     int range = (end-start)+1;
     int random_int = start+(rand()%range);
-    cout<<" Random "<<random_int<<endl;
     return random_int;
 };
 

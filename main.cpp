@@ -8,7 +8,7 @@ using namespace std;
 string RELATIVE_FILE_PATH="../contribuyentes/contribuyente01.csv";
 
 // Number of individuals in each generation
-#define POPULATION_SIZE 50
+#define POPULATION_SIZE 10
 
 // Driver code
 int main(int argc,char * argv[])
@@ -78,8 +78,10 @@ int main(int argc,char * argv[])
         for(int i = 0;i<s;i++)
         {
             int r = Individual::random_num(0, POPULATION_SIZE*0.5);
+            cout<<"valor de R "<<r<<endl;
             Individual parent1 = population.at(r);
             r = Individual::random_num(0, POPULATION_SIZE*0.5);
+            cout<<"valor de R "<<r<<endl;
             Individual parent2 = population.at(r);
             Individual offspring = parent1.mate(parent2);
             new_generation.push_back(offspring);

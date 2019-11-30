@@ -10,7 +10,6 @@ using namespace std;
 // Driver code
 int main(int argc,char * argv[])
 {
-    string target="null";
     // current generation
     int generation = 0;
     vector<Individual> population;

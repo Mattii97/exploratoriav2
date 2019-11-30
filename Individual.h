@@ -29,12 +29,11 @@ public:
 
 };
 
-string Individual::genePool;
+string Individual::genePool="0123";
 
 
 Individual::Individual(string chromosome)
 {
-    Individual::genePool="0123";
     this->chromosome = chromosome;
     for(int i = 0;i<8;i++)
     {
@@ -44,7 +43,6 @@ Individual::Individual(string chromosome)
 
 Individual::Individual()
 {
-    genePool="0123";
     string newcrom;
     for(int i = 0;i<8;i++)
     {
@@ -56,7 +54,6 @@ Individual::Individual()
 
 Individual::Individual(string chromosome,vector<int> weight)
 {
-    genePool="0123";
     this->weight=weight;
     this->chromosome = chromosome;
     fitness = calFitness();
@@ -72,7 +69,7 @@ Individual Individual::mate(Individual par2)
     for(int i = 0;i<8;i++)
     {
         // random probability
-        float p = ran=random_num(0,100)/100;
+        float p = random_num(0,100)/100;
 
         // if prob is less than 0.50, insert gene
         // from parent 1
@@ -92,7 +89,7 @@ Individual Individual::mate(Individual par2)
             // for maintaining diversity
             for (int i=0;i<8;i++)
             {
-                float p = ran=random_num(0, 100)/100;
+                float p = random_num(0, 100)/100;
                 if (p<0.05)
                 child_chromosome[i] = getMutatedGene(i);
             }

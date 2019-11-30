@@ -10,6 +10,10 @@ string RELATIVE_FILE_PATH="../contribuyentes/contribuyente01.csv";
 // Number of individuals in each generation
 #define POPULATION_SIZE 10
 
+bool comparator(Individual a, Individual b){
+    return b>a;
+}
+
 // Driver code
 int main(int argc,char * argv[])
 {
@@ -61,7 +65,7 @@ int main(int argc,char * argv[])
         }
 
         // sort the population in increasing order of fitness score
-        sort(population.begin(), population.end(),greater<>());
+        sort(population.begin(), population.end(),comparator);
 
         // Otherwise generate new offsprings for new generation
         vector<Individual> new_generation;

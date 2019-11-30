@@ -14,7 +14,7 @@ class Individual {
 public:
     static string genePool;
     vector<int> weight;
-    string chromosome="";
+    string chromosome;
     int fitness=0;
     Individual();
     Individual(string chromosome);
@@ -44,7 +44,7 @@ Individual::Individual(string chromosome)
 Individual::Individual()
 {
     genePool="0123";
-    string newcrom = "";
+    string newcrom;
     for(int i = 0;i<8;i++)
     {
         newcrom += getMutatedGene(i);
@@ -107,7 +107,7 @@ bool Individual::operator<(const Individual &ind2)
 return this->fitness < ind2.fitness;
 };
 
-char Individual::getMutatedGene(int geneNumber) //Hay que cambiar esta funcion para que devuelva entre rangos distintos dependiendo del gen que se esta mutando
+char Individual::getMutatedGene(int geneNumber)
 {
     if (geneNumber<=2)
     {
@@ -121,7 +121,7 @@ char Individual::getMutatedGene(int geneNumber) //Hay que cambiar esta funcion p
 
 int Individual::random_num(int start, int end)
 {
-    srand(time(NULL));
+    srand(time(0));
     int range = (end-start)+1;
     int random_int = start+(rand()%range);
     return random_int;
@@ -142,11 +142,13 @@ void Individual::updateWeights(Individual target) {
         if (chromosome[i]==target.chromosome[i])
             weight[i]++;
     }
-    calFitness();
+    fitness=calFitness();
 }
 
 bool Individual::operator>(const Individual &ind2) {
     return this->fitness > ind2.fitness;
 };
+
+
 
 #endif //EXPLORATORIAV2_INDIVIDUAL_H

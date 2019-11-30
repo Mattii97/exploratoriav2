@@ -26,6 +26,7 @@ public:
     static int random_num(int start, int end);
     int calFitness();
     void updateWeights(Individual target);
+
 };
 
 string Individual::genePool;
@@ -121,9 +122,9 @@ char Individual::getMutatedGene(int geneNumber)
 
 int Individual::random_num(int start, int end)
 {
-    srand(time(0));
     int range = (end-start)+1;
     int random_int = start+(rand()%range);
+    cout<<" Random "<<random_int<<endl;
     return random_int;
 };
 
@@ -149,6 +150,9 @@ bool Individual::operator>(const Individual &ind2) {
     return this->fitness > ind2.fitness;
 };
 
-
+ostream &operator<<( ostream &output, const Individual &I ) {
+    output << "Cromosoma : " << I.chromosome << " Fitness : " << I.fitness;
+    return output;
+}
 
 #endif //EXPLORATORIAV2_INDIVIDUAL_H

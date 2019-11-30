@@ -8,7 +8,7 @@ using namespace std;
 string RELATIVE_FILE_PATH="../contribuyentes/contribuyente01.csv";
 
 // Number of individuals in each generation
-#define POPULATION_SIZE 1000
+#define POPULATION_SIZE 50
 
 // Driver code
 int main(int argc,char * argv[])
@@ -42,6 +42,9 @@ int main(int argc,char * argv[])
         Individual ind;
         population.push_back(ind);
     }
+
+    for (int i=0;i<POPULATION_SIZE;i++)
+        cout<<population[i]<<endl;
 
     while(generation<contrib_targets.size())
     {

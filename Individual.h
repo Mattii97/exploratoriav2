@@ -21,6 +21,7 @@ public:
     Individual(string chromosome,vector<int> weight);
     Individual mate(Individual parent2);
     bool operator<(const Individual &ind2);
+    bool operator>(const Individual &ind2);
     char getMutatedGene(int geneNumber);
     static int random_num(int start, int end);
     int calFitness();
@@ -97,8 +98,8 @@ Individual Individual::mate(Individual par2)
     }
 
     // create new Individual(offspring) using
-    // generated chromosome for offspring
-    return Individual(child_chromosome);
+    // generated chromosome and weight for offspring
+    return Individual(child_chromosome,child_weight);
 };
 
 bool Individual::operator<(const Individual &ind2)
@@ -141,6 +142,11 @@ void Individual::updateWeights(Individual target) {
         if (chromosome[i]==target.chromosome[i])
             weight[i]++;
     }
+    calFitness();
+}
+
+bool Individual::operator>(const Individual &ind2) {
+    return this->fitness > ind2.fitness;
 };
 
 #endif //EXPLORATORIAV2_INDIVIDUAL_H

@@ -8,24 +8,34 @@ using namespace std;
 string RELATIVE_FILE_PATH="../contribuyentes/contribuyente01.csv";
 
 // Number of individuals in each generation
-#define POPULATION_SIZE 100
+#define POPULATION_SIZE 1000
 
 // Driver code
 int main(int argc,char * argv[])
 {
-    vector<string> cont_targets;
+    vector<int> nums;
+    nums.push_back(5);
+    nums.push_back(7);
+    nums.push_back(2);
+    nums.push_back(4);
+    sort(nums.begin(),nums.end(),greater<int>());
+    for (int i=0;i<nums.size();i++)
+        cout<<nums[i];
+
+    vector<Individual> contrib_targets;
     vector<vector<int>> aux=CSVManager::readFile(RELATIVE_FILE_PATH); ///Codigo para testear lo del archivo nomas.
     vector<vector<int>>::iterator it=aux.begin();
     while(aux.end()!=it){
-        string newtarget="";
+        string chromosome_target;
         vector<int>::iterator it2=it->begin();
         while(it->end()!=it2){
             //cout << *it2 << "\t";
-            newtarget=newtarget+to_string(*it2);
+            chromosome_target+=to_string(*it2);
             it2++;
         }
-        cont_targets.push_back(newtarget);
-        cout<<newtarget;
+        Individual newtarget(chromosome_target);
+        contrib_targets.push_back(newtarget);
+        cout<<newtarget.chromosome;
         cout << endl;
         it++;
     }
@@ -33,7 +43,7 @@ int main(int argc,char * argv[])
     // current generation
     int generation = 0;
     vector<Individual> population;
-    bool found = false;
+
     // create initial population
     for(int i = 0;i<POPULATION_SIZE;i++)
     {
@@ -41,9 +51,13 @@ int main(int argc,char * argv[])
         population.push_back(ind);
     }
 
-    while(generation<cont_targets.size())
+    while(generation<contrib_targets.size())
     {
-        Individual target=cont_targets[generation];///ESCRIBIR CODIGO PARA OBTENER NUEVO TARGET
+        string in;
+        cout<<"Presione cualquier tecla para continuar con la generación "<<generation<<"\n";
+        cin>>in;
+
+        Individual target=contrib_targets[generation];
 
         //Update weights of each individual
 
@@ -52,7 +66,7 @@ int main(int argc,char * argv[])
         }
 
         // sort the population in increasing order of fitness score
-        sort(population.begin(), population.end());
+        sort(population.begin(), population.end(),greater<>());
 
         // Otherwise generate new offsprings for new generation
         vector<Individual> new_generation;

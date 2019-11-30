@@ -13,15 +13,6 @@ string RELATIVE_FILE_PATH="../contribuyentes/contribuyente01.csv";
 // Driver code
 int main(int argc,char * argv[])
 {
-    vector<int> nums;
-    nums.push_back(5);
-    nums.push_back(7);
-    nums.push_back(2);
-    nums.push_back(4);
-    sort(nums.begin(),nums.end(),greater<int>());
-    for (int i=0;i<nums.size();i++)
-        cout<<nums[i];
-
     vector<Individual> contrib_targets;
     vector<vector<int>> aux=CSVManager::readFile(RELATIVE_FILE_PATH); ///Codigo para testear lo del archivo nomas.
     vector<vector<int>>::iterator it=aux.begin();

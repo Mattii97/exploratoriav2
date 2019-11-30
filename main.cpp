@@ -1,8 +1,11 @@
 #include <iostream>
 #include "Individual.h"
 #include <bits/stdc++.h>
+#include "CSVManager.h"
 
 using namespace std;
+
+string RELATIVE_FILE_PATH="../contribuyentes/contribuyente01.csv";
 
 // Number of individuals in each generation
 #define POPULATION_SIZE 100
@@ -10,6 +13,23 @@ using namespace std;
 // Driver code
 int main(int argc,char * argv[])
 {
+    vector<string> cont_targets;
+    vector<vector<int>> aux=CSVManager::readFile(RELATIVE_FILE_PATH); ///Codigo para testear lo del archivo nomas.
+    vector<vector<int>>::iterator it=aux.begin();
+    while(aux.end()!=it){
+        string newtarget="";
+        vector<int>::iterator it2=it->begin();
+        while(it->end()!=it2){
+            //cout << *it2 << "\t";
+            newtarget=newtarget+to_string(*it2);
+            it2++;
+        }
+        cont_targets.push_back(newtarget);
+        cout<<newtarget;
+        cout << endl;
+        it++;
+    }
+                                     //Este es el codigo que hay que ejecutar una vez por cada enter
     // current generation
     int generation = 0;
     vector<Individual> population;
@@ -21,9 +41,9 @@ int main(int argc,char * argv[])
         population.push_back(ind);
     }
 
-    while(! found)
+    while(generation<cont_targets.size())
     {
-        Individual target=///ESCRIBIR CODIGO PARA OBTENER NUEVO TARGET
+        Individual target=cont_targets[generation];///ESCRIBIR CODIGO PARA OBTENER NUEVO TARGET
 
         //Update weights of each individual
 
@@ -62,4 +82,6 @@ int main(int argc,char * argv[])
 
         generation++;
     }
+
+
 }

@@ -47,9 +47,6 @@ int main(int argc,char * argv[])
         population.push_back(ind);
     }
 
-    for (int i=0;i<POPULATION_SIZE;i++)
-        cout<<population[i]<<endl;
-
     while(generation<contrib_targets.size())
     {
         string in;
@@ -66,6 +63,10 @@ int main(int argc,char * argv[])
 
         // sort the population in increasing order of fitness score
         sort(population.begin(), population.end(),comparator);
+
+        cout<<"Esta es la poblacion"<<endl;
+        for (int i=0;i<POPULATION_SIZE;i++)
+            cout<<population[i]<<endl;
 
         // Otherwise generate new offsprings for new generation
         vector<Individual> new_generation;

@@ -89,8 +89,8 @@ Individual Individual::mate(Individual par2)
             // for maintaining diversity
             for (int i=0;i<8;i++)
             {
-                float p = random_num(0, 100)/100;
-                if (p<0.05)
+                int p = random_num(0, 99);
+                if (p==0)
                 child_chromosome[i] = getMutatedGene(i);
             }
     }

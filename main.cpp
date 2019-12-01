@@ -5,10 +5,10 @@
 
 using namespace std;
 
-string RELATIVE_FILE_PATH="../contribuyentes/contribuyente01.csv";
+string RELATIVE_FILE_PATH="../contribuyentes/contribuyente01_v2.csv";
 
 // Number of individuals in each generation
-#define POPULATION_SIZE 500
+#define POPULATION_SIZE 1000
 
 bool comparator(Individual a, Individual b){
     return a>b;
@@ -50,8 +50,7 @@ int main(int argc,char * argv[])
     while(generation<contrib_targets.size())
     {
         string in;
-        cout<<"Presione cualquier tecla para continuar con la generación "<<generation<<"\n";
-        cin>>in;
+        //cout<<"Presione cualquier tecla para continuar con la generación "<<generation<<"\n";
 
         Individual target=contrib_targets[generation];
 
@@ -96,6 +95,4 @@ int main(int argc,char * argv[])
 
         generation++;
     }
-
-
 }

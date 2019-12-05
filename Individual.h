@@ -27,7 +27,7 @@ public:
     static int random_num(int start, int end);
     int calFitness();
     void updateWeights(Individual target);
-
+    string classify();
 };
 
 string Individual::genePool="0123";
@@ -150,6 +150,32 @@ bool Individual::operator>(const Individual &ind2) {
 ostream &operator<<( ostream &output, const Individual &I ) {
     output << "Cromosoma : " << I.chromosome << " Fitness : " << I.fitness;
     return output;
+}
+
+string Individual::classify() {
+    int gen1=(int)(chromosome.at(0))-48;
+    int gen2=(int)(chromosome.at(1))-48;
+    int gen3=(int)(chromosome.at(2))-48;
+    int gen4=(int)(chromosome.at(3))-48;
+    int gen5=(int)(chromosome.at(4))-48;
+    int gen6=(int)(chromosome.at(5))-48;
+    int gen7=(int)(chromosome.at(6))-48;
+    int gen8=(int)(chromosome.at(7))-48;
+    //cout << "dentro de classify()" << endl;
+    //cout << "gen1: " << gen1 << ",gen2: " << gen2 << ",gen3: " << gen3 << ",gen4: " << gen4 << ",gen5: " << gen5 << "gen6: " << gen6 << "gen7: " << gen7 << ",gen8: " << gen8 << endl;
+    int aux=3*(3*gen2+gen6)+2*(3*gen1+3*gen3+gen7)+gen4+gen5+gen8;
+    //cout << "Aux: " <<  aux << endl;
+    if(aux>=0 && aux<=2)
+        return "Categoria A";
+    if(aux>=3 && aux<=6)
+        return "Categoria B";
+    if(aux>=7 && aux<=11)
+        return "Categoria C";
+    if(aux>=12 && aux<=20)
+        return "Categoria D";
+    if(aux>=21 && aux <=45)
+        return "Categoria E";
+    return "EEROR";
 }
 
 #endif //EXPLORATORIAV2_INDIVIDUAL_H

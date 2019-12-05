@@ -5,7 +5,7 @@
 
 using namespace std;
 
-string RELATIVE_FILE_PATH="../contribuyentes/contribuyente01_v2.csv";
+string RELATIVE_FILE_PATH="../contribuyentes/contribuyente08.csv";
 
 // Number of individuals in each generation
 #define POPULATION_SIZE 1000
@@ -91,7 +91,7 @@ int main(int argc,char * argv[])
         population = new_generation;
         cout<< "Generation: " << generation << "\t";
         cout<< "Best individual: "<< population.at(0).chromosome <<"\t";
-        cout<< "Fitness: "<< population.at(0).fitness << "\n";
+        cout<< "Fitness: "<< population.at(0).fitness << " es categoria: " << population.at(0).classify() << "\n";
 
         generation++;
     }

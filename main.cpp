@@ -5,7 +5,7 @@
 
 using namespace std;
 
-string RELATIVE_FILE_PATH="../contribuyentes/contribuyente08.csv";
+string RELATIVE_FILE_PATH="../contribuyentes/D.csv";
 
 // Number of individuals in each generation
 #define POPULATION_SIZE 1000
@@ -63,9 +63,9 @@ int main(int argc,char * argv[])
         // sort the population in increasing order of fitness score
         sort(population.begin(), population.end(),comparator);
 
-        cout<<"Esta es la poblacion"<<endl;
+        /*cout<<"Esta es la poblacion"<<endl;
         for (int i=0;i<POPULATION_SIZE;i++)
-            cout<<population[i]<<endl;
+            cout<<population[i]<<endl;*/
 
         // Otherwise generate new offsprings for new generation
         vector<Individual> new_generation;
@@ -89,7 +89,7 @@ int main(int argc,char * argv[])
             new_generation.push_back(offspring);
         }
         population = new_generation;
-        cout<< "Generation: " << generation << "\t";
+        cout<< "Generation: " << generation+1 << "\t";
         cout<< "Best individual: "<< population.at(0).chromosome <<"\t";
         cout<< "Fitness: "<< population.at(0).fitness << " es categoria: " << population.at(0).classify() << "\n";
 

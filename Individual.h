@@ -8,6 +8,7 @@
 #include "Individual.h"
 #include "time.h"
 #include <vector>
+
 using namespace std;
 
 class Individual {
